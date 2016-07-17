@@ -14,6 +14,12 @@ import java.util.ArrayList;
  */
 public class ColorsActivity extends AppCompatActivity {
 
+    private MediaPlayer mMediaPlayer;
+    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
+        public void onCompletion(MediaPlayer mp) {
+            releaseMediaPlayer();
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,15 +27,15 @@ public class ColorsActivity extends AppCompatActivity {
 
         final ArrayList<Word> words = new ArrayList<Word>();
 
-        words.add(new Word("black", "kappu",R.drawable.color_black,R.raw.black));
-        words.add(new Word("white", "beeLi",R.drawable.color_white,R.raw.white));
-        words.add(new Word("red", "kempu",R.drawable.color_red,R.raw.red));
-        words.add(new Word("gray", "buudu",R.drawable.color_gray,R.raw.gray));
-        words.add(new Word("green", "hasiru",R.drawable.color_green,R.raw.green));
-        words.add(new Word("yellow", "haLadi",R.drawable.color_mustard_yellow,R.raw.yellow));
-        words.add(new Word("brown", "kandu",R.drawable.color_brown,R.raw.brown));
+        words.add(new Word("black", "kappu", R.drawable.color_black, R.raw.black));
+        words.add(new Word("white", "beeLi", R.drawable.color_white, R.raw.white));
+        words.add(new Word("red", "kempu", R.drawable.color_red, R.raw.red));
+        words.add(new Word("gray", "buudu", R.drawable.color_gray, R.raw.gray));
+        words.add(new Word("green", "hasiru", R.drawable.color_green, R.raw.green));
+        words.add(new Word("yellow", "haLadi", R.drawable.color_mustard_yellow, R.raw.yellow));
+        words.add(new Word("brown", "kandu", R.drawable.color_brown, R.raw.brown));
 
-        WordAdaptor itemsAdapter = new WordAdaptor(this, words,R.color.category_colors);
+        WordAdaptor itemsAdapter = new WordAdaptor(this, words, R.color.category_colors);
 
         ListView listView = (ListView) findViewById(R.id.list);
 
@@ -39,9 +45,24 @@ public class ColorsActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Word word = words.get(position);
-                MediaPlayer mediaPlayer = MediaPlayer.create(ColorsActivity.this, word.getmAudioId());
-                mediaPlayer.start();
+
+                releaseMediaPlayer();
+                mMediaPlayer = MediaPlayer.create(ColorsActivity.this, word.getmAudioId());
+                mMediaPlayer.start();
+                mMediaPlayer.setOnCompletionListener(mCompletionListener);
             }
         });
     }
+
+
+
+        private void releaseMediaPlayer()
+        {
+            if(mMediaPlayer != null){
+                mMediaPlayer.release();
+                mMediaPlayer = null;
+
+            }
+        }
+
 }

@@ -75,7 +75,5 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-        public void color(View view)
-        {}
-    }
+}
 
