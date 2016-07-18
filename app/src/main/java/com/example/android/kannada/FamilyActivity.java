@@ -1,9 +1,11 @@
 package com.example.android.kannada;
 
+import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
  * Created by  on 03-Jul-16.
  */
 public class FamilyActivity extends AppCompatActivity{
+
+    private int mSelectedItem;
 
     private MediaPlayer mMediaPlayer;
     private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
@@ -37,15 +41,21 @@ public class FamilyActivity extends AppCompatActivity{
         words.add(new Word("grandmoter", "ajji",R.drawable.family_grandmother,R.raw.grandmom));
         words.add(new Word("grandfather", "ajja",R.drawable.family_grandfather,R.raw.granddad));
 
-        WordAdaptor itemsAdapter = new WordAdaptor(this, words, R.color.category_family);
+        final WordAdaptor itemsAdapter = new WordAdaptor(this, words, R.color.category_family);
 
-        ListView listView = (ListView) findViewById(R.id.list);
+        final ListView listView = (ListView) findViewById(R.id.list);
 
         listView.setAdapter(itemsAdapter);
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+              //  mSelectedItem = position;
+              //  itemsAdapter.notifyDataSetChanged();
+
+
+              //  view.setSelected(true);
                 Word word = words.get(position);
                 releaseMediaPlayer();
                 mMediaPlayer = MediaPlayer.create(FamilyActivity.this, word.getmAudioId());
@@ -54,6 +64,22 @@ public class FamilyActivity extends AppCompatActivity{
             }
         });
 
+    }
+
+    /*public View getView(int position, View convertView, ViewGroup parent) {
+        final View view = View.inflate(this, R.layout.item_list, null);
+
+        if (position == mSelectedItem) {
+            view.setBackground(Color.BLACK);
+        }
+
+        return view;
+    }*/
+
+    protected void onStop(){
+
+        super.onStop();
+        releaseMediaPlayer();
     }
 
     private void releaseMediaPlayer()

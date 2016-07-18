@@ -57,14 +57,21 @@ public class NumbersActivity extends AppCompatActivity {
             }
         });
     }
-        private void releaseMediaPlayer()
-        {
-            if(mMediaPlayer != null){
-                mMediaPlayer.release();
-                mMediaPlayer = null;
 
-            }
+    protected void onStop(){
+
+        super.onStop();
+        releaseMediaPlayer();
+    }
+
+    private void releaseMediaPlayer()
+    {
+        if(mMediaPlayer != null){
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+
         }
+    }
 
        /* int index = 0;
         LinearLayout rootView = (LinearLayout)findViewById(R.id.rootview);
