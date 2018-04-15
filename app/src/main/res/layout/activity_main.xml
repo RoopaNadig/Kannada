@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:background="@color/tan_background"
         android:orientation="vertical"
-        tools:context="com.example.android.kannada.MainActivity">
+        tools:context="com.example.android.learnkannada.com.rnadig.learnkannada.MainActivity">
 
         <TextView
             android:id="@+id/numbers"
@@ -27,15 +27,13 @@
             android:id="@+id/colors"
             style="@style/CategoryStyle"
             android:background="@color/category_colors"
-            android:text="@string/category_colors"
-            android:onClick="color"/>
+            android:text="@string/category_colors"/>
 
         <TextView
             android:id="@+id/phrases"
             style="@style/CategoryStyle"
             android:background="@color/category_phrases"
-            android:text="@string/category_phrases"
-            android:onClick="color"/>
+            android:text="@string/category_phrases"/>
 
     </LinearLayout>
 </ScrollView>

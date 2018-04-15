@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.kannada">
+    package="com.rnadig.learnkannada">
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/icon_xl"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.rnadig.learnkannada.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,21 +17,21 @@
         </activity>
 
         <activity
-            android:name=".NumbersActivity"
+            android:name="com.rnadig.learnkannada.NumbersActivity"
             android:label="Numbers"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="com.rnadig.learnkannada.MainActivity">
         </activity>
-        <activity android:name=".FamilyActivity"
+        <activity android:name="com.rnadig.learnkannada.FamilyActivity"
             android:label="Family"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="com.rnadig.learnkannada.MainActivity">
         </activity>
-        <activity android:name=".ColorsActivity"
+        <activity android:name="com.rnadig.learnkannada.ColorsActivity"
             android:label="Colors"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="com.rnadig.learnkannada.MainActivity">
         </activity>
-        <activity android:name=".PhrasesActivity"
-            android:label="Phrases"
-            android:parentActivityName=".MainActivity">
+        <activity android:name="com.rnadig.learnkannada.PhrasesActivity"
+            android:label="Words and Phrases"
+            android:parentActivityName="com.rnadig.learnkannada.MainActivity">
         </activity>
     </application>
 

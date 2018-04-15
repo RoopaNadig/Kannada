@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">Kannada</string>
+    <string name="app_name">Learn Kannada</string>
 
 
     <!-- Category name for phrases [CHAR LIMIT=20] -->
-    <string name="category_phrases">Phrases</string>
+    <string name="category_phrases">Words and Phrases</string>
 
     <!-- Category name for the vocabulary words for colors [CHAR LIMIT=20] -->
     <string name="category_colors">Colors</string>
